@@ -1,0 +1,34 @@
+# Python
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg
+*.egg-info/
+*.whl
+.Python
+
+# Virtual environment
+# This assumes your virtual environment is named 'venv' or '.venv'
+venv/
+.venv/
+
+# Distribution / build artifacts
+dist/
+build/
+*.spec
+
+# MyPy (static type checker)
+.mypy_cache/
+
+# Pytest
+.pytest_cache/
+.coverage # Coverage report file from pytest-cov
+htmlcov/  # HTML coverage reports from pytest-cov
+.pytest_log # A generic log file you might create
+pytest_output.log # The specific log file we configured in pyproject.toml
+
+# Jupyter Notebook / IPython history
+.ipynb_checkpoints/
+.ipython/

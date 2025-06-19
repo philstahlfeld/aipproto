@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package {{ spec.package }};
+
+{% for import in spec.imports -%}
+import "{{ import }}";
+{%- endfor %}
+
+service {{ spec.service_name }} {
+{%- for method_group in spec.method_groups %}
+  // Methods for {{ method_group.type }}.
+  {% for method in method_group.methods -%}
+  rpc {{ method.name }}({{ method.request_type }}) returns ({{ method.response_type }}) {
+    {%- for option in method.options %}
+    option ({{ option.type}}) = {{ option.value }};
+    {%- endfor %} 
+  }
+  {% endfor -%}
+{% endfor %}
+}
+
+// ADD RESOURCE TYPES.
+
+// ADD REQUESTS/RESPONSES. 
