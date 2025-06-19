@@ -8,6 +8,7 @@ def test_render():
 
     content = aipproto.generate_file_content(
         package="bar.foo.v1",
+        domain="foo.bar.com",
         service_name="TestService",
         resource_types=[foo, bar],
     )

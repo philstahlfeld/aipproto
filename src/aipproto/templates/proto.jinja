@@ -19,6 +19,30 @@ service {{ spec.service_name }} {
 {% endfor %}
 }
 
-// ADD RESOURCE TYPES.
+//////////////////////////////////////////////////////////
+//                                                      //
+//                  Resource Types                      //
+//                                                      //
+//////////////////////////////////////////////////////////
+{% for resource in spec.resources -%}
+message {{ resource.type }} {
+  option (google.api.resource) = {
+    type: "{{ spec.domain }}/{{ resource.type }}"
+    pattern: "{{ resource.pattern }}"
+  };
 
-// ADD REQUESTS/RESPONSES. 
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+}
+
+{% endfor -%}
+
+//////////////////////////////////////////////////////////
+//                                                      //
+//               Requests & Responses                   //
+//                                                      //
+//////////////////////////////////////////////////////////
+{% for req_res in spec.req_res %}
+message {{ req_res.type }} {
+  
+}
+{% endfor -%}
