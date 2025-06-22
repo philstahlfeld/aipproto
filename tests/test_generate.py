@@ -1,6 +1,5 @@
 import pathlib
 import aipproto
-import pytest
 
 _GOLDEN_FILES_DIR = pathlib.Path(__file__).parent / "testdata"
 
@@ -24,18 +23,3 @@ def test_generate_file_content(update_goldens):
         assert (
             content == golden_file_path.read_text()
         ), f"Generated content doesn't match golden. Run with --update-goldens to update the golden file."
-
-
-def pytest_addoption(parser):
-    parser.addoption(
-        "--update-goldens",
-        action="store_true",
-        default=False,
-        help="Update golden files",
-    )
-
-
-@pytest.fixture(scope="session")
-def update_goldens(request):
-    """Fixture to check if --update-goldens was passed."""
-    return request.config.getoption("--update-goldens")
