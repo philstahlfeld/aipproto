@@ -1,23 +1,7 @@
 import pathlib
 import aipproto
-import pytest
 
 _GOLDEN_FILES_DIR = pathlib.Path(__file__).parent / "testdata"
-
-
-def pytest_addoption(parser):
-    parser.addoption(
-        "--update-goldens",
-        action="store_true",
-        default=False,
-        help="Update golden files",
-    )
-
-
-@pytest.fixture(scope="session")
-def update_goldens(request):
-    """Fixture to check if --update-goldens was passed."""
-    return request.config.getoption("--update-goldens")
 
 
 def test_generate_file_content(update_goldens):
