@@ -1,10 +1,8 @@
 syntax = "proto3";
 
 package {{ spec.package }};
-
-{% for import in spec.imports -%}
-import "{{ import }}";
-{%- endfor %}
+{% for import in spec.imports %}
+import "{{ import }}";{% endfor %}
 
 service {{ spec.service_name }} {
 {%- for method_group in spec.method_groups %}

@@ -32,3 +32,5 @@ pytest_output.log # The specific log file we configured in pyproject.toml
 # Jupyter Notebook / IPython history
 .ipynb_checkpoints/
 .ipython/
+
+bazel-*
