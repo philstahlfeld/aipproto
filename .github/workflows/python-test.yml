@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies and self
         run: |
-          pip install -e .[test]
+          pip install -e ".[test]"
 
       - name: Run Pytest
         run: |
