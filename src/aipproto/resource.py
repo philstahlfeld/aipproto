@@ -73,6 +73,10 @@ class Resource:
             or resource_config.ResourceConfig()
         )
 
+    def namespace(self) -> Namespace:
+        """Get the namespace this resource belongs to."""
+        return self._namespace
+
 
 Case = Literal["camel", "snake", "pascal"]
 Number = Literal["s", "pl"]

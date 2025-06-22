@@ -21,10 +21,3 @@ def _response_message(resource_type: resource.Resource) -> str:
     if resource_type.config().delete_config().soft:
         return resource_type.format_type("pascal")
     return "google.protobuf.Empty"
-
-
-def _method_signature(resource_type: resource.Resource) -> render.Option:
-    fields = [resource_type.format_type("snake")]
-    if resource_type.config().update_config().partial:
-        fields.append("update_mask")
-    return options.method_signature(",".join(fields))

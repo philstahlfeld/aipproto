@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aipproto"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
   { name="Phil Stahlfeld", email="phil@stahlfeld.com" },
 ]
@@ -20,7 +20,7 @@ Issues = "https://github.com/yourusername/your_package_name/issues"
 package-dir = { "" = "src" }
 
 [tool.setuptools.package-data]
-"your_package_name" = ["src/aipproto/templates/*.jinja"]
+"aipproto" = ["templates/*.jinja"]
 
 [tool.pytest.ini_options]
 # Configure pytest here
@@ -31,10 +31,11 @@ testpaths = ["tests"]
 # This prevents a common pitfall.
 pythonpath = ["src"]
 
+enable_assertion_pass_hook = true
+
 [project.optional-dependencies]
 # Dependencies only needed for development or testing
 test = [
     "pytest>=7.0",
-    "pytest-cov", # For coverage reporting (optional but recommended)
-    # Any other packages your tests rely on, e.g., requests, numpy, etc.
+    "pytest-cov", 
 ]
