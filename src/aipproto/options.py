@@ -28,7 +28,7 @@ FieldBehavior = Literal["IDENTIFIER"] | Literal["OUTPUT_ONLY"] | Literal["REQUIR
 def field_behavior(behavior: FieldBehavior) -> render.Option:
     return render.Option(
         type="google.api.field_behavior",
-        value=f'"{behavior}"',
+        value=f"{behavior}",
     )
 
 

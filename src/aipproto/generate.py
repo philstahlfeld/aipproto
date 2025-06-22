@@ -36,7 +36,7 @@ def generate_file_content(
         package=package,
         service_name=service_name,
         method_groups=method_groups,
-        imports=["google/api/annotations.proto"],
+        imports=_IMPORTS,
         resources=resources,
         req_res=req_res,
     )
@@ -57,4 +57,13 @@ _REQ_RES_FNS = [
     create_req_res.from_resource,
     update_req_res.from_resource,
     delete_req_res.from_resource,
+]
+
+_IMPORTS = [
+    "google/api/annotations.proto",
+    "google/api/client.proto",
+    "google/api/field_behavior.proto",
+    "google/api/resource.proto",
+    "google/protobuf/empty.proto",
+    "google/protobuf/field_mask.proto",
 ]
