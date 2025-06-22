@@ -27,7 +27,7 @@ service {{ spec.service_name }} {
 {% for resource in spec.resources -%}
 message {{ resource.type }} {
   option (google.api.resource) = {
-    type: "{{ spec.domain }}/{{ resource.type }}"
+    type: "{{ resource.domain }}/{{ resource.type }}"
     pattern: "{{ resource.pattern }}"
   };
 
@@ -41,8 +41,21 @@ message {{ resource.type }} {
 //               Requests & Responses                   //
 //                                                      //
 //////////////////////////////////////////////////////////
-{% for req_res in spec.req_res %}
+{%- macro options_list(options) -%}
+{%- if not options -%}
+{% else %} [{% for option in options %}
+    ({{ option.type }}) = {{ option.value }}{{ "," if not loop.last }}{% endfor %}
+  ]
+{%- endif %}
+{%- endmacro -%}
+
+{%- for req_res in spec.req_res %}
 message {{ req_res.type }} {
-  
+  {%- for field in req_res.fields %}
+  {%- for line in field.comment_lines %}
+  // {{ line }}
+  {%- endfor %}
+  {{ field.type }} {{ field.name }} = {{ loop.index }}{{ options_list(field.options) }}; 
+  {%- endfor %}
 }
 {% endfor -%}

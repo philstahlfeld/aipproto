@@ -7,11 +7,11 @@ import jinja2
 
 class FileSpec(NamedTuple):
     package: str
-    domain: str
     service_name: str
     method_groups: List["MethodGroup"] = []
     imports: List[str] = []
     resources: List["Resource"] = []
+    req_res: List["ReqRes"] = []
 
     def render(self) -> str:
         template_path = importlib.resources.files("aipproto") / "templates"
@@ -37,6 +37,24 @@ class Option(NamedTuple):
     type: str
     value: str
 
+
 class Resource(NamedTuple):
     type: str
     pattern: str
+    domain: str
+
+
+class ReqResGroup(NamedTuple):
+    req_res: List["ReqRes"]
+
+
+class ReqRes(NamedTuple):
+    type: str
+    fields: List["ReqResField"]
+
+
+class ReqResField(NamedTuple):
+    type: str
+    name: str
+    comment_lines: List[str] = []
+    options: List[Option] = []
