@@ -34,6 +34,9 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
             render.ReqResField(
                 type="bool",
                 name="force",
+                comment_lines=[
+                    f"If set, deletes the {pascal} and all of its children.",
+                ],
                 options=[
                     options.field_behavior("OPTIONAL"),
                 ],

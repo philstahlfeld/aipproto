@@ -36,6 +36,7 @@ message {{ resource.type }} {
     plural: "{{ resource.plural }}"
   };
 
+  // The name of the {{ resource.type }}.
   string name = 1 [(google.api.field_behavior) = IDENTIFIER];
 }
 

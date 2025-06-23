@@ -18,6 +18,9 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
         render.ReqResField(
             type=resource_type.format_type("pascal"),
             name=resource_type.format_type("snake"),
+            comment_lines=[
+                f"The {pascal} being updated.",
+            ],
             options=[
                 options.field_behavior("REQUIRED"),
             ],
@@ -28,6 +31,9 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
             render.ReqResField(
                 type="google.protobuf.FieldMask",
                 name="update_mask",
+                comment_lines=[
+                    "The set of fields to update.",
+                ],
                 options=[
                     options.field_behavior("OPTIONAL"),
                 ],

@@ -98,6 +98,7 @@ message Foo {
     plural: "foos"
   };
 
+  // The name of the Foo.
   string name = 1 [(google.api.field_behavior) = IDENTIFIER];
 }
 
@@ -109,6 +110,7 @@ message BarBaz {
     plural: "barBazs"
   };
 
+  // The name of the BarBaz.
   string name = 1 [(google.api.field_behavior) = IDENTIFIER];
 }
 
@@ -128,32 +130,40 @@ message GetFooRequest {
 }
 
 message ListFoosRequest {
+  // The maximum number of Foo to return.
   int32 page_size = 1 [
     (google.api.field_behavior) = OPTIONAL
   ];
+  // The page token to use for the next page of results.
   string page_token = 2 [
     (google.api.field_behavior) = OPTIONAL
   ];
 }
 
 message ListFoosResponse {
+  // The list of Foos in the collection.
   repeated Foo foos = 1;
+  // The token to use for the next page of results.
   string next_page_token = 2;
 }
 
 message CreateFooRequest {
+  // The ID to use for the Foo being created.
   string foo_id = 1 [
     (google.api.field_behavior) = OPTIONAL
   ];
+  // The Foo being created.
   Foo foo = 2 [
     (google.api.field_behavior) = REQUIRED
   ];
 }
 
 message UpdateFooRequest {
+  // The Foo being updated.
   Foo foo = 1 [
     (google.api.field_behavior) = REQUIRED
   ];
+  // The set of fields to update.
   google.protobuf.FieldMask update_mask = 2 [
     (google.api.field_behavior) = OPTIONAL
   ];
@@ -167,6 +177,7 @@ message DeleteFooRequest {
       type: "foo.bar.com/Foo"
     }
   ];
+  // If set, deletes the Foo and all of its children.
   bool force = 2 [
     (google.api.field_behavior) = OPTIONAL
   ];
@@ -190,16 +201,20 @@ message ListBarBazsRequest {
       child_type: "foo.bar.com/BarBaz"
     }
   ];
+  // The maximum number of BarBaz to return.
   int32 page_size = 2 [
     (google.api.field_behavior) = OPTIONAL
   ];
+  // The page token to use for the next page of results.
   string page_token = 3 [
     (google.api.field_behavior) = OPTIONAL
   ];
 }
 
 message ListBarBazsResponse {
+  // The list of BarBazs in the collection.
   repeated BarBaz bar_bazs = 1;
+  // The token to use for the next page of results.
   string next_page_token = 2;
 }
 
@@ -211,18 +226,22 @@ message CreateBarBazRequest {
       child_type: "foo.bar.com/BarBaz"
     }
   ];
+  // The ID to use for the BarBaz being created.
   string bar_baz_id = 2 [
     (google.api.field_behavior) = OPTIONAL
   ];
+  // The BarBaz being created.
   BarBaz bar_baz = 3 [
     (google.api.field_behavior) = REQUIRED
   ];
 }
 
 message UpdateBarBazRequest {
+  // The BarBaz being updated.
   BarBaz bar_baz = 1 [
     (google.api.field_behavior) = REQUIRED
   ];
+  // The set of fields to update.
   google.protobuf.FieldMask update_mask = 2 [
     (google.api.field_behavior) = OPTIONAL
   ];
