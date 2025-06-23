@@ -31,6 +31,7 @@ def generate_file_content(
             type=rt.format_type("pascal"),
             pattern=hierarchy.pattern(rt),
             domain=rt.namespace().name,
+            singular=rt.format_type("camel"),
             plural=rt.format_type("camel", "pl"),
         )
         for rt in resource_types

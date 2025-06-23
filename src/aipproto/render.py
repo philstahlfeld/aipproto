@@ -42,6 +42,7 @@ class Resource(NamedTuple):
     type: str
     pattern: str
     domain: str
+    singular: str
     plural: str
 
 

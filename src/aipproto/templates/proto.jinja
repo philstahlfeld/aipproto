@@ -29,6 +29,7 @@ message {{ resource.type }} {
   option (google.api.resource) = {
     type: "{{ resource.domain }}/{{ resource.type }}"
     pattern: "{{ resource.pattern }}"
+    singular: "{{ resource.singular }}"
     plural: "{{ resource.plural }}"
   };
 

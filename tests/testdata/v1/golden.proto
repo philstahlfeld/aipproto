@@ -91,6 +91,7 @@ message Foo {
   option (google.api.resource) = {
     type: "foo.bar.com/Foo"
     pattern: "foos/{foo}"
+    singular: "foo"
     plural: "foos"
   };
 
@@ -101,6 +102,7 @@ message BarBaz {
   option (google.api.resource) = {
     type: "foo.bar.com/BarBaz"
     pattern: "foos/{foo}/barBazs/{bar_baz}"
+    singular: "barBaz"
     plural: "barBazs"
   };
 
