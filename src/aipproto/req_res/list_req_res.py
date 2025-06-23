@@ -50,10 +50,16 @@ def _request_fields(resource_type: resource.Resource) -> List[render.ReqResField
             render.ReqResField(
                 type="int32",
                 name="page_size",
+                options=[
+                    options.field_behavior("OPTIONAL"),
+                ],
             ),
             render.ReqResField(
                 type="string",
                 name="page_token",
+                options=[
+                    options.field_behavior("OPTIONAL"),
+                ],
             ),
         ]
     )

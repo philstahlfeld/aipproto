@@ -125,8 +125,12 @@ message GetFooRequest {
 }
 
 message ListFoosRequest {
-  int32 page_size = 1;
-  string page_token = 2;
+  int32 page_size = 1 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
+  string page_token = 2 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
 }
 
 message ListFoosResponse {
@@ -176,8 +180,12 @@ message ListBarBazsRequest {
       child_type: "foo.bar.com/BarBaz"
     }
   ];
-  int32 page_size = 2;
-  string page_token = 3;
+  int32 page_size = 2 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
+  string page_token = 3 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
 }
 
 message ListBarBazsResponse {
