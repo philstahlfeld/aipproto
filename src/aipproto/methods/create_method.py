@@ -25,5 +25,9 @@ def _http(resource_type: resource.Resource) -> render.Option:
 
 def _method_signature(resource_type: resource.Resource) -> render.Option:
     field = resource_type.format_type("snake")
-    sig = f"parent,{field}" if resource_type.parent() else field
+    sig = (
+        f"parent,{field},{field}_id"
+        if resource_type.parent()
+        else f"{field},{field}_id"
+    )
     return options.method_signature(sig)

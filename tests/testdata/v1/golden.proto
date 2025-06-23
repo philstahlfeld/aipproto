@@ -21,7 +21,7 @@ service TestService {
       post : "/v1/foos"
       body: "foo"
     };
-    option (google.api.method_signature) = "foo"; 
+    option (google.api.method_signature) = "foo,foo_id"; 
   }
   rpc GetFoo(GetFooRequest) returns (Foo) {
     option (google.api.http) = {
@@ -55,7 +55,7 @@ service TestService {
       post : "/v1/{parent=foos/*}/barBazs"
       body: "bar_baz"
     };
-    option (google.api.method_signature) = "parent,bar_baz"; 
+    option (google.api.method_signature) = "parent,bar_baz,bar_baz_id"; 
   }
   rpc GetBarBaz(GetBarBazRequest) returns (BarBaz) {
     option (google.api.http) = {
