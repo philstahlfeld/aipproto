@@ -142,8 +142,12 @@ message ListFoosResponse {
 }
 
 message CreateFooRequest {
-  string foo_id = 1;
-  Foo foo = 2;
+  string foo_id = 1 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
+  Foo foo = 2 [
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 message UpdateFooRequest {
@@ -205,8 +209,12 @@ message CreateBarBazRequest {
       child_type: "foo.bar.com/BarBaz"
     }
   ];
-  string bar_baz_id = 2;
-  BarBaz bar_baz = 3;
+  string bar_baz_id = 2 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
+  BarBaz bar_baz = 3 [
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 message UpdateBarBazRequest {

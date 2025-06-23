@@ -36,10 +36,16 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
             render.ReqResField(
                 type="string",
                 name=f"{resource_type.format_type('snake')}_id",
+                options=[
+                    options.field_behavior("OPTIONAL"),
+                ],
             ),
             render.ReqResField(
                 type=resource_type.format_type("pascal"),
                 name=resource_type.format_type("snake"),
+                options=[
+                    options.field_behavior("REQUIRED"),
+                ],
             ),
         ]
     )
