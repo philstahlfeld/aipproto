@@ -1,7 +1,7 @@
 import pathlib
 import aipproto
 
-_GOLDEN_FILES_DIR = pathlib.Path(__file__).parent / "testdata"
+_GOLDEN_FILES_DIR = pathlib.Path(__file__).parent / "testdata" / "v1"
 
 
 def test_generate_file_content(update_goldens):

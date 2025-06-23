@@ -1,4 +1,5 @@
 load("@protobuf//bazel:proto_library.bzl", "proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_descriptor_set")
 
 proto_library(
     name = "golden_proto",
@@ -11,4 +12,9 @@ proto_library(
         "@protobuf//:empty_proto",
         "@protobuf//:field_mask_proto",
     ],
+)
+
+proto_descriptor_set(
+    name = "golden_proto_descriptor_set",
+    deps = [":golden_proto"],
 )
