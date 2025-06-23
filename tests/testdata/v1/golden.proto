@@ -137,7 +137,9 @@ message UpdateFooRequest {
   Foo foo = 1 [
     (google.api.field_behavior) = REQUIRED
   ];
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask update_mask = 2 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
 }
 
 message DeleteFooRequest {
@@ -188,7 +190,9 @@ message UpdateBarBazRequest {
   BarBaz bar_baz = 1 [
     (google.api.field_behavior) = REQUIRED
   ];
-  google.protobuf.FieldMask update_mask = 2;
+  google.protobuf.FieldMask update_mask = 2 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
 }
 
 message DeleteBarBazRequest {

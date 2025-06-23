@@ -28,6 +28,9 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
             render.ReqResField(
                 type="google.protobuf.FieldMask",
                 name="update_mask",
+                options=[
+                    options.field_behavior("OPTIONAL"),
+                ],
             )
         )
     return fields
