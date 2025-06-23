@@ -160,6 +160,7 @@ message DeleteFooRequest {
       type: "foo.bar.com/Foo"
     }
   ];
+  bool force = 2;
 }
 
 message GetBarBazRequest {

@@ -42,9 +42,11 @@ class Resource:
         self._singular = singular
         self._plural = plural or singular + "s"
         self._config = config
+        self.has_children = False
 
     def nest(self, *args, **kwargs) -> "Resource":
         """Create a new child Resource."""
+        self.has_children = True
         return Resource(self._namespace, self, *args, **kwargs)
 
     def format_type(self, case: "Case", number: "Number" = "s") -> str:
