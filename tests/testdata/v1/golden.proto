@@ -91,6 +91,7 @@ message Foo {
   option (google.api.resource) = {
     type: "foo.bar.com/Foo"
     pattern: "foos/{foo_id}"
+    plural: "foos"
   };
 
   string name = 1 [(google.api.field_behavior) = IDENTIFIER];
@@ -100,6 +101,7 @@ message BarBaz {
   option (google.api.resource) = {
     type: "foo.bar.com/BarBaz"
     pattern: "foos/{foo_id}/barBazs/{bar_baz_id}"
+    plural: "barBazs"
   };
 
   string name = 1 [(google.api.field_behavior) = IDENTIFIER];
