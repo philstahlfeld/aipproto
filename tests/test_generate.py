@@ -13,6 +13,7 @@ def test_generate_file_content(update_goldens):
         package="tests.testdata.v1",
         service_name="TestService",
         resource_types=[foo, bar],
+        java_outer_classname="GoldenProto",
     )
 
     golden_file_path = _GOLDEN_FILES_DIR / "golden.proto"

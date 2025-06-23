@@ -12,6 +12,7 @@ class FileSpec(NamedTuple):
     imports: List[str] = []
     resources: List["Resource"] = []
     req_res: List["ReqRes"] = []
+    java_outer_classname: str = "TODO"
 
     def render(self) -> str:
         template_path = importlib.resources.files("aipproto") / "templates"

@@ -14,6 +14,7 @@ def generate_file_content(
     package: str,
     service_name: str,
     resource_types: Sequence[resource.Resource],
+    java_outer_classname: str = "TODO",
 ) -> str:
     """Generates the content of a proto file based on the provided resources.
 
@@ -48,6 +49,7 @@ def generate_file_content(
         imports=_IMPORTS,
         resources=resources,
         req_res=req_res,
+        java_outer_classname=java_outer_classname,
     )
 
     return fspec.render()
