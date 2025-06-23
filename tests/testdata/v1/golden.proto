@@ -90,7 +90,7 @@ service TestService {
 message Foo {
   option (google.api.resource) = {
     type: "foo.bar.com/Foo"
-    pattern: "foos/{foo_id}"
+    pattern: "foos/{foo}"
     plural: "foos"
   };
 
@@ -100,7 +100,7 @@ message Foo {
 message BarBaz {
   option (google.api.resource) = {
     type: "foo.bar.com/BarBaz"
-    pattern: "foos/{foo_id}/barBazs/{bar_baz_id}"
+    pattern: "foos/{foo}/barBazs/{bar_baz}"
     plural: "barBazs"
   };
 
