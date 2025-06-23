@@ -143,8 +143,13 @@ message UpdateFooRequest {
 }
 
 message DeleteFooRequest {
-  string foo_id = 1;
-  Foo foo = 2;
+  // The name of the Foo to delete.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "foo.bar.com/Foo"
+    }
+  ];
 }
 
 message GetBarBazRequest {
@@ -203,6 +208,4 @@ message DeleteBarBazRequest {
       type: "foo.bar.com/BarBaz"
     }
   ];
-  string bar_baz_id = 2;
-  BarBaz bar_baz = 3;
 }
