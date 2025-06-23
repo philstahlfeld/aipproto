@@ -10,7 +10,7 @@ def test_generate_file_content(update_goldens):
     bar = foo.nest("BarBaz")
 
     content = aipproto.generate_file_content(
-        package="bar.foo.v1",
+        package="tests.testdata.v1",
         service_name="TestService",
         resource_types=[foo, bar],
     )
