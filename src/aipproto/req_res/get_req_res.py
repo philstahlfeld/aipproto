@@ -15,7 +15,7 @@ def from_resource(resource_type: resource.Resource) -> List[render.ReqRes]:
                         f"The name of the {pascal} to retrieve.",
                     ],
                     options=[
-                        options.field_behavior("IDENTIFIER"),
+                        options.field_behavior("REQUIRED"),
                         options.resource_reference(
                             "type", f"{resource_type.namespace().name}/{pascal}"
                         ),

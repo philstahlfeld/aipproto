@@ -113,7 +113,7 @@ message BarBaz {
 message GetFooRequest {
   // The name of the Foo to retrieve.
   string name = 1 [
-    (google.api.field_behavior) = IDENTIFIER,
+    (google.api.field_behavior) = REQUIRED,
     (google.api.resource_reference) = {
       type: "foo.bar.com/Foo"
     }
@@ -157,7 +157,7 @@ message DeleteFooRequest {
 message GetBarBazRequest {
   // The name of the BarBaz to retrieve.
   string name = 1 [
-    (google.api.field_behavior) = IDENTIFIER,
+    (google.api.field_behavior) = REQUIRED,
     (google.api.resource_reference) = {
       type: "foo.bar.com/BarBaz"
     }
