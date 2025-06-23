@@ -24,7 +24,7 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
                     f"The parent that owns this {pascal}.",
                 ],
                 options=[
-                    options.field_behavior("IDENTIFIER"),
+                    options.field_behavior("REQUIRED"),
                     options.resource_reference(
                         "child_type", f"{resource_type.namespace().name}/{pascal}"
                     ),

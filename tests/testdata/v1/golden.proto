@@ -165,7 +165,7 @@ message GetBarBazRequest {
 message ListBarBazsRequest {
   // The parent that owns this collection of BarBaz.
   string parent = 1 [
-    (google.api.field_behavior) = IDENTIFIER,
+    (google.api.field_behavior) = REQUIRED,
     (google.api.resource_reference) = {
       child_type: "foo.bar.com/BarBaz"
     }
@@ -182,7 +182,7 @@ message ListBarBazsResponse {
 message CreateBarBazRequest {
   // The parent that owns this BarBaz.
   string parent = 1 [
-    (google.api.field_behavior) = IDENTIFIER,
+    (google.api.field_behavior) = REQUIRED,
     (google.api.resource_reference) = {
       child_type: "foo.bar.com/BarBaz"
     }
