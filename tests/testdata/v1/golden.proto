@@ -90,6 +90,7 @@ service TestService {
 //                  Resource Types                      //
 //                                                      //
 //////////////////////////////////////////////////////////
+// TODO: Describe the Foo type.
 message Foo {
   option (google.api.resource) = {
     type: "foo.bar.com/Foo"
@@ -102,6 +103,7 @@ message Foo {
   string name = 1 [(google.api.field_behavior) = IDENTIFIER];
 }
 
+// TODO: Describe the BarBaz type.
 message BarBaz {
   option (google.api.resource) = {
     type: "foo.bar.com/BarBaz"

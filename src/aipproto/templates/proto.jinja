@@ -28,6 +28,7 @@ service {{ spec.service_name }} {
 //                                                      //
 //////////////////////////////////////////////////////////
 {% for resource in spec.resources -%}
+// TODO: Describe the {{ resource.type }} type.
 message {{ resource.type }} {
   option (google.api.resource) = {
     type: "{{ resource.domain }}/{{ resource.type }}"
