@@ -167,7 +167,9 @@ message DeleteFooRequest {
       type: "foo.bar.com/Foo"
     }
   ];
-  bool force = 2;
+  bool force = 2 [
+    (google.api.field_behavior) = OPTIONAL
+  ];
 }
 
 message GetBarBazRequest {
