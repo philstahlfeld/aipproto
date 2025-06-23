@@ -8,6 +8,7 @@ option java_package = "{{ spec.package }}";
 {% for import in spec.imports %}
 import "{{ import }}";{% endfor %}
 
+// TODO: describe this service.
 service {{ spec.service_name }} {
 {%- for method_group in spec.method_groups %}
   // Methods for {{ method_group.type }}.

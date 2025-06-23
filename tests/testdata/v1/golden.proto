@@ -13,6 +13,7 @@ import "google/api/resource.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/field_mask.proto";
 
+// TODO: describe this service.
 service TestService {
   // Methods for Foos.
   rpc CreateFoo(CreateFooRequest) returns (Foo) {
