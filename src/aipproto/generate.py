@@ -15,6 +15,13 @@ def generate_file_content(
     service_name: str,
     resource_types: Sequence[resource.Resource],
 ) -> str:
+    """Generates the content of a proto file based on the provided resources.
+
+    Args:
+        package: The proto package (e.g. "foo.bar.v1").
+        service_name: The name of the service (e.g. "BarService").
+        resource_types: The resource types in the API.
+    """
     method_groups = [
         method_group.from_resource(resource_type) for resource_type in resource_types
     ]
