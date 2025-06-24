@@ -8,10 +8,12 @@ def from_resource(resource_type: resource.Resource) -> List[render.ReqRes]:
     return [
         render.ReqRes(
             type=f"List{pascal_pl}Request",
+            description=f"Request message for listing {pascal_pl}.",
             fields=_request_fields(resource_type),
         ),
         render.ReqRes(
             type=f"List{pascal_pl}Response",
+            description=f"Response message for listing {pascal_pl}.",
             fields=[
                 render.ReqResField(
                     type=f"repeated {pascal_s}",

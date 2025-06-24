@@ -58,6 +58,7 @@ message {{ resource.type }} {
 {%- endmacro -%}
 
 {%- for req_res in spec.req_res %}
+// {{ req_res.description }}
 message {{ req_res.type }} {
   {%- for field in req_res.fields %}
   {%- for line in field.comment_lines %}

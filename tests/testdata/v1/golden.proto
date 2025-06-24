@@ -131,6 +131,7 @@ message BarBaz {
 //               Requests & Responses                   //
 //                                                      //
 //////////////////////////////////////////////////////////
+// Request message for retrieving a Foo.
 message GetFooRequest {
   // The name of the Foo to retrieve.
   string name = 1 [
@@ -141,6 +142,7 @@ message GetFooRequest {
   ];
 }
 
+// Request message for listing Foos.
 message ListFoosRequest {
   // The maximum number of Foo to return.
   int32 page_size = 1 [
@@ -152,6 +154,7 @@ message ListFoosRequest {
   ];
 }
 
+// Response message for listing Foos.
 message ListFoosResponse {
   // The list of Foos in the collection.
   repeated Foo foos = 1;
@@ -159,6 +162,7 @@ message ListFoosResponse {
   string next_page_token = 2;
 }
 
+// Request message for creating a Foo.
 message CreateFooRequest {
   // The ID to use for the Foo being created.
   string foo_id = 1 [
@@ -170,6 +174,7 @@ message CreateFooRequest {
   ];
 }
 
+// Request message for updating a Foo.
 message UpdateFooRequest {
   // The Foo being updated.
   Foo foo = 1 [
@@ -181,6 +186,7 @@ message UpdateFooRequest {
   ];
 }
 
+// Request message for deleting a Foo.
 message DeleteFooRequest {
   // The name of the Foo to delete.
   string name = 1 [
@@ -195,6 +201,7 @@ message DeleteFooRequest {
   ];
 }
 
+// Request message for retrieving a BarBaz.
 message GetBarBazRequest {
   // The name of the BarBaz to retrieve.
   string name = 1 [
@@ -205,6 +212,7 @@ message GetBarBazRequest {
   ];
 }
 
+// Request message for listing BarBazs.
 message ListBarBazsRequest {
   // The parent that owns this collection of BarBaz.
   string parent = 1 [
@@ -223,6 +231,7 @@ message ListBarBazsRequest {
   ];
 }
 
+// Response message for listing BarBazs.
 message ListBarBazsResponse {
   // The list of BarBazs in the collection.
   repeated BarBaz bar_bazs = 1;
@@ -230,6 +239,7 @@ message ListBarBazsResponse {
   string next_page_token = 2;
 }
 
+// Request message for creating a BarBaz.
 message CreateBarBazRequest {
   // The parent that owns this BarBaz.
   string parent = 1 [
@@ -248,6 +258,7 @@ message CreateBarBazRequest {
   ];
 }
 
+// Request message for updating a BarBaz.
 message UpdateBarBazRequest {
   // The BarBaz being updated.
   BarBaz bar_baz = 1 [
@@ -259,6 +270,7 @@ message UpdateBarBazRequest {
   ];
 }
 
+// Request message for deleting a BarBaz.
 message DeleteBarBazRequest {
   // The name of the BarBaz to delete.
   string name = 1 [

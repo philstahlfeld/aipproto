@@ -7,6 +7,7 @@ def from_resource(resource_type: resource.Resource) -> List[render.ReqRes]:
     return [
         render.ReqRes(
             type=f"Get{resource_type.format_type('pascal')}Request",
+            description=f"Request message for retrieving a {pascal}.",
             fields=[
                 render.ReqResField(
                     type="string",

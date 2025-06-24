@@ -54,6 +54,7 @@ class ReqResGroup(NamedTuple):
 
 class ReqRes(NamedTuple):
     type: str
+    description: str
     fields: List["ReqResField"]
 
 
