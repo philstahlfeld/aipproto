@@ -16,6 +16,7 @@ import "google/protobuf/field_mask.proto";
 // TODO: describe this service.
 service TestService {
   // Methods for Foos.
+  // Creates a new Foo.
   rpc CreateFoo(CreateFooRequest) returns (Foo) {
     option (google.api.http) = {
       post : "/v1/foos"
@@ -23,18 +24,21 @@ service TestService {
     };
     option (google.api.method_signature) = "foo,foo_id"; 
   }
+  // Retrieves a Foo.
   rpc GetFoo(GetFooRequest) returns (Foo) {
     option (google.api.http) = {
       get : "/v1/{name=foos/*}"
     };
     option (google.api.method_signature) = "name"; 
   }
+  // Lists Foos.
   rpc ListFoos(ListFoosRequest) returns (ListFoosResponse) {
     option (google.api.http) = {
       get : "/v1/foos"
     };
     option (google.api.method_signature) = ""; 
   }
+  // Updates a Foo.
   rpc UpdateFoo(UpdateFooRequest) returns (Foo) {
     option (google.api.http) = {
       patch : "/v1/{foo.name=foos/*}"
@@ -42,6 +46,7 @@ service TestService {
     };
     option (google.api.method_signature) = "foo,update_mask"; 
   }
+  // Deletes a Foo.
   rpc DeleteFoo(DeleteFooRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete : "/v1/{name=foos/*}"
@@ -50,6 +55,7 @@ service TestService {
   }
   
   // Methods for BarBazs.
+  // Creates a new BarBaz.
   rpc CreateBarBaz(CreateBarBazRequest) returns (BarBaz) {
     option (google.api.http) = {
       post : "/v1/{parent=foos/*}/barBazs"
@@ -57,18 +63,21 @@ service TestService {
     };
     option (google.api.method_signature) = "parent,bar_baz,bar_baz_id"; 
   }
+  // Retrieves a BarBaz.
   rpc GetBarBaz(GetBarBazRequest) returns (BarBaz) {
     option (google.api.http) = {
       get : "/v1/{name=foos/*/barBazs/*}"
     };
     option (google.api.method_signature) = "name"; 
   }
+  // Lists BarBazs.
   rpc ListBarBazs(ListBarBazsRequest) returns (ListBarBazsResponse) {
     option (google.api.http) = {
       get : "/v1/{parent=foos/*}/barBazs"
     };
     option (google.api.method_signature) = "parent"; 
   }
+  // Updates a BarBaz.
   rpc UpdateBarBaz(UpdateBarBazRequest) returns (BarBaz) {
     option (google.api.http) = {
       patch : "/v1/{bar_baz.name=foos/*/barBazs/*}"
@@ -76,6 +85,7 @@ service TestService {
     };
     option (google.api.method_signature) = "bar_baz,update_mask"; 
   }
+  // Deletes a BarBaz.
   rpc DeleteBarBaz(DeleteBarBazRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete : "/v1/{name=foos/*/barBazs/*}"

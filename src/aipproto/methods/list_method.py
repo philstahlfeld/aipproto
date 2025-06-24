@@ -4,6 +4,7 @@ from aipproto import hierarchy, options, render, resource
 def from_resource(resource_type: resource.Resource) -> render.Method:
     return render.Method(
         name=f"List{resource_type.format_type('pascal', 'pl')}",
+        description=f"Lists {resource_type.format_type('pascal', 'pl')}.",
         request_type=f"List{resource_type.format_type('pascal', 'pl')}Request",
         response_type=f"List{resource_type.format_type('pascal', 'pl')}Response",
         options=[

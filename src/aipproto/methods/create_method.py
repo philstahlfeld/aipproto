@@ -2,10 +2,12 @@ from aipproto import hierarchy, options, render, resource
 
 
 def from_resource(resource_type: resource.Resource) -> render.Method:
+    pascal = resource_type.format_type("pascal")
     return render.Method(
-        name=f"Create{resource_type.format_type('pascal')}",
-        request_type=f"Create{resource_type.format_type('pascal')}Request",
-        response_type=resource_type.format_type("pascal"),
+        name=f"Create{pascal}",
+        description=f"Creates a new {pascal}.",
+        request_type=f"Create{pascal}Request",
+        response_type=pascal,
         options=[
             _http(resource_type),
             _method_signature(resource_type),

@@ -29,6 +29,7 @@ class MethodGroup(NamedTuple):
 
 class Method(NamedTuple):
     name: str
+    description: str
     request_type: str
     response_type: str
     options: List["Option"] = []

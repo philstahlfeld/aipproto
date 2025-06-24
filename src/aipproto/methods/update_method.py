@@ -5,6 +5,7 @@ def from_resource(resource_type: resource.Resource) -> render.Method:
     snake_s = resource_type.format_type("snake")
     return render.Method(
         name=f"Update{resource_type.format_type('pascal')}",
+        description=f"Updates a {resource_type.format_type('pascal')}.",
         request_type=f"Update{resource_type.format_type('pascal')}Request",
         response_type=resource_type.format_type("pascal"),
         options=[
