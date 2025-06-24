@@ -7,6 +7,7 @@ def from_resource(resource_type: resource.Resource) -> List[render.ReqRes]:
     return [
         render.ReqRes(
             type=f"Delete{pascal}Request",
+            description=f"Request message for deleting a {pascal}.",
             fields=_fields(resource_type),
         ),
     ]
@@ -14,33 +15,32 @@ def from_resource(resource_type: resource.Resource) -> List[render.ReqRes]:
 
 def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
     pascal = resource_type.format_type("pascal")
-    fields = []
-    if resource_type.parent():
+    fields = [
+        render.ReqResField(
+            type="string",
+            name="name",
+            comment_lines=[
+                f"The name of the {pascal} to delete.",
+            ],
+            options=[
+                options.field_behavior("REQUIRED"),
+                options.resource_reference(
+                    "type", f"{resource_type.namespace().name}/{pascal}"
+                ),
+            ],
+        )
+    ]
+    if resource_type.has_children:
         fields.append(
             render.ReqResField(
-                type="string",
-                name="name",
+                type="bool",
+                name="force",
                 comment_lines=[
-                    f"The name of the {pascal} to delete.",
+                    f"If set, deletes the {pascal} and all of its children.",
                 ],
                 options=[
-                    options.field_behavior("REQUIRED"),
-                    options.resource_reference(
-                        "type", f"{resource_type.namespace().name}/{pascal}"
-                    ),
+                    options.field_behavior("OPTIONAL"),
                 ],
             )
         )
-    fields.extend(
-        [
-            render.ReqResField(
-                type="string",
-                name=f"{resource_type.format_type('snake')}_id",
-            ),
-            render.ReqResField(
-                type=resource_type.format_type("pascal"),
-                name=resource_type.format_type("snake"),
-            ),
-        ]
-    )
     return fields

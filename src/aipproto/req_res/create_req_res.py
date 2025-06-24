@@ -7,6 +7,7 @@ def from_resource(resource_type: resource.Resource) -> List[render.ReqRes]:
     return [
         render.ReqRes(
             type=f"Create{pascal}Request",
+            description=f"Request message for creating a {pascal}.",
             fields=_fields(resource_type),
         ),
     ]
@@ -24,7 +25,7 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
                     f"The parent that owns this {pascal}.",
                 ],
                 options=[
-                    options.field_behavior("IDENTIFIER"),
+                    options.field_behavior("REQUIRED"),
                     options.resource_reference(
                         "child_type", f"{resource_type.namespace().name}/{pascal}"
                     ),
@@ -36,10 +37,22 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
             render.ReqResField(
                 type="string",
                 name=f"{resource_type.format_type('snake')}_id",
+                comment_lines=[
+                    f"The ID to use for the {pascal} being created.",
+                ],
+                options=[
+                    options.field_behavior("OPTIONAL"),
+                ],
             ),
             render.ReqResField(
                 type=resource_type.format_type("pascal"),
                 name=resource_type.format_type("snake"),
+                comment_lines=[
+                    f"The {pascal} being created.",
+                ],
+                options=[
+                    options.field_behavior("REQUIRED"),
+                ],
             ),
         ]
     )

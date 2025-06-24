@@ -14,6 +14,7 @@ def generate_file_content(
     package: str,
     service_name: str,
     resource_types: Sequence[resource.Resource],
+    java_outer_classname: str = "TODO",
 ) -> str:
     """Generates the content of a proto file based on the provided resources.
 
@@ -31,6 +32,8 @@ def generate_file_content(
             type=rt.format_type("pascal"),
             pattern=hierarchy.pattern(rt),
             domain=rt.namespace().name,
+            singular=rt.format_type("camel"),
+            plural=rt.format_type("camel", "pl"),
         )
         for rt in resource_types
     ]
@@ -46,6 +49,7 @@ def generate_file_content(
         imports=_IMPORTS,
         resources=resources,
         req_res=req_res,
+        java_outer_classname=java_outer_classname,
     )
 
     return fspec.render()

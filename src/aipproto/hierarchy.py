@@ -13,11 +13,14 @@ def matcher(resource_type: resource.Resource) -> str:
 
 
 def pattern(resource_type: resource.Resource) -> str:
-    components = [resource_type.collection(), f"{{{resource_type.format_type('snake')}_id}}"]
+    components = [
+        resource_type.collection(),
+        f"{{{resource_type.format_type('snake')}}}",
+    ]
     parent = resource_type.parent()
     while parent:
         current = parent
-        components.insert(0, f"{{{current.format_type('snake')}_id}}")
+        components.insert(0, f"{{{current.format_type('snake')}}}")
         components.insert(0, current.collection())
         parent = current.parent()
     return "/".join(components)

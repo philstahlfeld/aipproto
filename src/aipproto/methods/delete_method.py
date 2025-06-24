@@ -2,9 +2,9 @@ from aipproto import hierarchy, options, render, resource
 
 
 def from_resource(resource_type: resource.Resource) -> render.Method:
-    snake_s = resource_type.format_type("snake")
     return render.Method(
         name=f"Delete{resource_type.format_type('pascal')}",
+        description=f"Deletes a {resource_type.format_type('pascal')}.",
         request_type=f"Delete{resource_type.format_type('pascal')}Request",
         response_type=_response_message(resource_type),
         options=[

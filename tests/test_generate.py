@@ -1,7 +1,7 @@
 import pathlib
 import aipproto
 
-_GOLDEN_FILES_DIR = pathlib.Path(__file__).parent / "testdata"
+_GOLDEN_FILES_DIR = pathlib.Path(__file__).parent / "testdata" / "v1"
 
 
 def test_generate_file_content(update_goldens):
@@ -10,9 +10,10 @@ def test_generate_file_content(update_goldens):
     bar = foo.nest("BarBaz")
 
     content = aipproto.generate_file_content(
-        package="bar.foo.v1",
+        package="tests.testdata.v1",
         service_name="TestService",
         resource_types=[foo, bar],
+        java_outer_classname="GoldenProto",
     )
 
     golden_file_path = _GOLDEN_FILES_DIR / "golden.proto"

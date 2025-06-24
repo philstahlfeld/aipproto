@@ -1,13 +1,19 @@
 syntax = "proto3";
 
 package {{ spec.package }};
+
+option java_multiple_files = true;
+option java_outer_classname = "{{ spec.java_outer_classname }}";
+option java_package = "{{ spec.package }}";
 {% for import in spec.imports %}
 import "{{ import }}";{% endfor %}
 
+// TODO: describe this service.
 service {{ spec.service_name }} {
 {%- for method_group in spec.method_groups %}
   // Methods for {{ method_group.type }}.
   {% for method in method_group.methods -%}
+  // {{ method.description }}
   rpc {{ method.name }}({{ method.request_type }}) returns ({{ method.response_type }}) {
     {%- for option in method.options %}
     option ({{ option.type}}) = {{ option.value }};
@@ -23,12 +29,16 @@ service {{ spec.service_name }} {
 //                                                      //
 //////////////////////////////////////////////////////////
 {% for resource in spec.resources -%}
+// TODO: Describe the {{ resource.type }} type.
 message {{ resource.type }} {
   option (google.api.resource) = {
     type: "{{ resource.domain }}/{{ resource.type }}"
     pattern: "{{ resource.pattern }}"
+    singular: "{{ resource.singular }}"
+    plural: "{{ resource.plural }}"
   };
 
+  // The name of the {{ resource.type }}.
   string name = 1 [(google.api.field_behavior) = IDENTIFIER];
 }
 
@@ -48,6 +58,7 @@ message {{ resource.type }} {
 {%- endmacro -%}
 
 {%- for req_res in spec.req_res %}
+// {{ req_res.description }}
 message {{ req_res.type }} {
   {%- for field in req_res.fields %}
   {%- for line in field.comment_lines %}

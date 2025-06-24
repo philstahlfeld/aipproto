@@ -12,6 +12,7 @@ class FileSpec(NamedTuple):
     imports: List[str] = []
     resources: List["Resource"] = []
     req_res: List["ReqRes"] = []
+    java_outer_classname: str = "TODO"
 
     def render(self) -> str:
         template_path = importlib.resources.files("aipproto") / "templates"
@@ -28,6 +29,7 @@ class MethodGroup(NamedTuple):
 
 class Method(NamedTuple):
     name: str
+    description: str
     request_type: str
     response_type: str
     options: List["Option"] = []
@@ -42,6 +44,8 @@ class Resource(NamedTuple):
     type: str
     pattern: str
     domain: str
+    singular: str
+    plural: str
 
 
 class ReqResGroup(NamedTuple):
@@ -50,6 +54,7 @@ class ReqResGroup(NamedTuple):
 
 class ReqRes(NamedTuple):
     type: str
+    description: str
     fields: List["ReqResField"]
 
 

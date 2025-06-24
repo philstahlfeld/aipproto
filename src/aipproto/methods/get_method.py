@@ -5,6 +5,7 @@ def from_resource(resource_type: resource.Resource) -> render.Method:
     matcher = hierarchy.matcher(resource_type)
     return render.Method(
         name=f"Get{resource_type.format_type('pascal')}",
+        description=f"Retrieves a {resource_type.format_type('pascal')}.",
         request_type=f"Get{resource_type.format_type('pascal')}Request",
         response_type=resource_type.format_type("pascal"),
         options=[

@@ -22,7 +22,12 @@ def http(method: str, path: str, body: Optional[str] = None) -> render.Option:
     )
 
 
-FieldBehavior = Literal["IDENTIFIER"] | Literal["OUTPUT_ONLY"] | Literal["REQUIRED"]
+FieldBehavior = (
+    Literal["IDENTIFIER"]
+    | Literal["OUTPUT_ONLY"]
+    | Literal["REQUIRED"]
+    | Literal["OPTIONAL"]
+)
 
 
 def field_behavior(behavior: FieldBehavior) -> render.Option:
