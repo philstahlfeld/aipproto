@@ -9,7 +9,7 @@ authors = [
   { name="Phil Stahlfeld", email="phil@stahlfeld.com" },
 ]
 dynamic = ["version"]
-description = "A short description of your package"
+description = "AIP proto generator"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -21,7 +21,6 @@ Homepage = "https://github.com/philstahlfeld/aipproto"
 Issues = "https://github.com/philstahlfeld/aipproto/issues"
 
 [project.optional-dependencies]
-# Dependencies only needed for development or testing
 test = [
     "pytest>=7.0",
     "pytest-cov",
@@ -34,12 +33,7 @@ package-dir = { "" = "src" }
 "aipproto" = ["templates/*.jinja"]
 
 [tool.pytest.ini_options]
-# Configure pytest here
-# This tells pytest where to look for tests
 testpaths = ["tests"]
-# Essential for src-layout to ensure tests import the *installed* package
-# rather than accidentally trying to import from the src directory directly.
-# This prevents a common pitfall.
 pythonpath = ["src"]
 
 enable_assertion_pass_hook = true
