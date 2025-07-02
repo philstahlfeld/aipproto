@@ -5,21 +5,20 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "aipproto"
 # Version will be managed by setuptools_scm
-# version = "0.1.1"
 authors = [
   { name="Phil Stahlfeld", email="phil@stahlfeld.com" },
 ]
 dynamic = ["version"]
 description = "A short description of your package"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 dependencies = [
     "jinja2>=3.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/your_package_name"
-Issues = "https://github.com/yourusername/your_package_name/issues"
+Homepage = "https://github.com/philstahlfeld"
+Issues = "https://github.com/philstahlfeld/issues"
 
 [project.optional-dependencies]
 # Dependencies only needed for development or testing
@@ -46,7 +45,5 @@ pythonpath = ["src"]
 enable_assertion_pass_hook = true
 
 [tool.setuptools_scm]
-# Configuration for setuptools_scm, e.g.
-# write_to = "src/aipproto/_version.py"
-# version_scheme = "guess-next-dev"
-# local_scheme = "node-and-date"
+version_scheme = "guess-next-dev"
+local_scheme = "node-and-date"
