@@ -1,6 +1,6 @@
 from typing import Literal, Optional
 
-from aipproto import render
+from aipproto._internal import render
 
 
 def method_signature(signature: str) -> render.Option:

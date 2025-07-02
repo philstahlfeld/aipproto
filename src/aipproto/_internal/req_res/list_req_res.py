@@ -1,5 +1,6 @@
 from typing import List
-from aipproto import options, render, resource
+from aipproto import resource
+from aipproto._internal import options, render
 
 
 def from_resource(resource_type: resource.Resource) -> List[render.ReqRes]:
