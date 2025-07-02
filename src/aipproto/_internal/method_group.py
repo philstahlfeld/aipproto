@@ -1,5 +1,6 @@
-from aipproto import render, resource
-from aipproto.methods import (
+from aipproto import resource
+from aipproto._internal import render
+from aipproto._internal.methods import (
     create_method,
     delete_method,
     get_method,

@@ -1,13 +1,14 @@
 from typing import List
-from aipproto import options, render, resource
+from aipproto import resource
+from aipproto._internal import options, render
 
 
 def from_resource(resource_type: resource.Resource) -> List[render.ReqRes]:
     pascal = resource_type.format_type("pascal")
     return [
         render.ReqRes(
-            type=f"Update{pascal}Request",
-            description=f"Request message for updating a {pascal}.",
+            type=f"Delete{pascal}Request",
+            description=f"Request message for deleting a {pascal}.",
             fields=_fields(resource_type),
         ),
     ]
@@ -17,23 +18,26 @@ def _fields(resource_type: resource.Resource) -> List[render.ReqResField]:
     pascal = resource_type.format_type("pascal")
     fields = [
         render.ReqResField(
-            type=resource_type.format_type("pascal"),
-            name=resource_type.format_type("snake"),
+            type="string",
+            name="name",
             comment_lines=[
-                f"The {pascal} being updated.",
+                f"The name of the {pascal} to delete.",
             ],
             options=[
                 options.field_behavior("REQUIRED"),
+                options.resource_reference(
+                    "type", f"{resource_type.namespace().name}/{pascal}"
+                ),
             ],
         )
     ]
-    if resource_type.config().update_config().partial:
+    if resource_type.has_children:
         fields.append(
             render.ReqResField(
-                type="google.protobuf.FieldMask",
-                name="update_mask",
+                type="bool",
+                name="force",
                 comment_lines=[
-                    "The set of fields to update.",
+                    f"If set, deletes the {pascal} and all of its children.",
                 ],
                 options=[
                     options.field_behavior("OPTIONAL"),

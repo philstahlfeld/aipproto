@@ -1,4 +1,5 @@
-from aipproto import hierarchy, options, render, resource
+from aipproto import resource
+from aipproto._internal import hierarchy, options, render
 
 
 def from_resource(resource_type: resource.Resource) -> render.Method:

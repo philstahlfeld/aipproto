@@ -1,7 +1,8 @@
 from typing import List, Sequence
 
-from aipproto import hierarchy, method_group, render, resource
-from aipproto.req_res import (
+from aipproto import resource
+from aipproto._internal import hierarchy, method_group, render
+from aipproto._internal.req_res import (
     create_req_res,
     delete_req_res,
     get_req_res,

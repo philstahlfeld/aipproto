@@ -15,7 +15,7 @@ class FileSpec(NamedTuple):
     java_outer_classname: str = "TODO"
 
     def render(self) -> str:
-        template_path = importlib.resources.files("aipproto") / "templates"
+        template_path = importlib.resources.files("aipproto._internal") / "templates"
         loader = jinja2.FileSystemLoader(str(template_path))
         env = jinja2.Environment(loader=loader)
         template = env.get_template("proto.jinja")
