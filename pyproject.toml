@@ -17,8 +17,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/philstahlfeld"
-Issues = "https://github.com/philstahlfeld/issues"
+Homepage = "https://github.com/philstahlfeld/aipproto"
+Issues = "https://github.com/philstahlfeld/aipproto/issues"
 
 [project.optional-dependencies]
 # Dependencies only needed for development or testing
