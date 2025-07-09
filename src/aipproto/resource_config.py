@@ -6,11 +6,11 @@ class ResourceConfig:
         self,
         update_config: Optional["UpdateConfig"] = None,
         delete_config: Optional["DeleteConfig"] = None,
-        custom_methods: List["CustomMethod"] = [],
+        custom_methods: Optional[List["CustomMethod"]] = None,
     ):
         self._update_config = update_config
         self._delete_config = delete_config
-        self.custom_methods = custom_methods
+        self.custom_methods = custom_methods or []
 
     def has_update_config(self) -> bool:
         return self._update_config is not None
