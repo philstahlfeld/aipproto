@@ -95,7 +95,7 @@ service TestService {
   // TODO: describe custom method.
   rpc ArchiveBarBaz(ArchiveBarBazRequest) returns (ArchiveBarBazResponse) {
     option (google.api.http) = {
-      post : "/v1/{name=foos/*/barBazs/*}/abc:archive"
+      post : "/v1/{name=foos/*/barBazs/*}:archive"
       body: "*"
     }; 
   }
