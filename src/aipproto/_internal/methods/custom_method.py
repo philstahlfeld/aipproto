@@ -20,7 +20,9 @@ def from_resource(
     )
 
 
-def _http(resource_type: resource.Resource, method: resource_config.CustomMethod) -> render.Option:
+def _http(
+    resource_type: resource.Resource, method: resource_config.CustomMethod
+) -> render.Option:
     if not method.name:
         raise ValueError("Custom method name cannot be empty.")
     method_camel = method.name[:1].lower() + method.name[1:]
@@ -29,7 +31,7 @@ def _http(resource_type: resource.Resource, method: resource_config.CustomMethod
         if parent:
             path = f"/v1/{{parent={hierarchy.matcher(parent)}}}/{resource_type.collection()}:{method_camel}"
         else:
-            raise ValueError("Collection-based custom methods must have a parent resource.")
+            path = f"/v1/{resource_type.collection()}:{method_camel}"
     else:
         path = f"/v1/{{name={hierarchy.matcher(resource_type)}}}:{method_camel}"
     return options.http("post", path, body="*")
