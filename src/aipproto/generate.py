@@ -4,6 +4,7 @@ from aipproto import resource
 from aipproto._internal import hierarchy, method_group, render
 from aipproto._internal.req_res import (
     create_req_res,
+    custom_req_res,
     delete_req_res,
     get_req_res,
     list_req_res,
@@ -60,6 +61,8 @@ def _make_req_res(resource_type: resource.Resource) -> List[render.ReqRes]:
     req_res = []
     for fn in _REQ_RES_FNS:
         req_res.extend(fn(resource_type))
+    for method in resource_type.config().custom_methods:
+        req_res.extend(custom_req_res.from_resource(resource_type, method))
     return req_res
 
 

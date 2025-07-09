@@ -92,6 +92,20 @@ service TestService {
     };
     option (google.api.method_signature) = "name"; 
   }
+  // TODO: describe custom method.
+  rpc ArchiveBarBaz(ArchiveBarBazRequest) returns (ArchiveBarBazResponse) {
+    option (google.api.http) = {
+      post : "/v1/{name=foos/*/barBazs/*}/abc:archive"
+      body: "*"
+    }; 
+  }
+  // TODO: describe custom method.
+  rpc SortBarBazs(SortBarBazsRequest) returns (SortBarBazsResponse) {
+    option (google.api.http) = {
+      post : "/v1/{parent=foos/*}/barBazs:sort"
+      body: "*"
+    }; 
+  }
   
 }
 
@@ -279,4 +293,34 @@ message DeleteBarBazRequest {
       type: "foo.bar.com/BarBaz"
     }
   ];
+}
+
+// TODO: describe custom method request.
+message ArchiveBarBazRequest {
+  // The name of the BarBaz.
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      type: "foo.bar.com/BarBaz"
+    }
+  ];
+}
+
+// TODO: describe custom method response.
+message ArchiveBarBazResponse {
+}
+
+// TODO: describe custom method request.
+message SortBarBazsRequest {
+  // The parent that owns this collection of BarBazs.
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {
+      child_type: "foo.bar.com/BarBaz"
+    }
+  ];
+}
+
+// TODO: describe custom method response.
+message SortBarBazsResponse {
 }

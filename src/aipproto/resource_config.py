@@ -1,4 +1,4 @@
-from typing import NamedTuple, Optional
+from typing import List, NamedTuple, Optional
 
 
 class ResourceConfig:
@@ -6,9 +6,11 @@ class ResourceConfig:
         self,
         update_config: Optional["UpdateConfig"] = None,
         delete_config: Optional["DeleteConfig"] = None,
+        custom_methods: List["CustomMethod"] = [],
     ):
         self._update_config = update_config
         self._delete_config = delete_config
+        self.custom_methods = custom_methods
 
     def has_update_config(self) -> bool:
         return self._update_config is not None
@@ -29,3 +31,8 @@ class UpdateConfig(NamedTuple):
 
 class DeleteConfig(NamedTuple):
     soft: bool = False
+
+
+class CustomMethod(NamedTuple):
+    name: str
+    collection_based: bool = False
