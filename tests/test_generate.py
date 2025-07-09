@@ -7,7 +7,15 @@ _GOLDEN_FILES_DIR = pathlib.Path(__file__).parent / "testdata" / "v1"
 def test_generate_file_content(update_goldens):
     namespace = aipproto.Namespace("foo.bar.com")
     foo = namespace.resource("Foo")
-    bar = foo.nest("BarBaz")
+    bar = foo.nest(
+        "BarBaz",
+        config=aipproto.ResourceConfig(
+            custom_methods=[
+                aipproto.CustomMethod(name="Archive"),
+                aipproto.CustomMethod(name="Sort", collection_based=True),
+            ]
+        ),
+    )
 
     content = aipproto.generate_file_content(
         package="tests.testdata.v1",
