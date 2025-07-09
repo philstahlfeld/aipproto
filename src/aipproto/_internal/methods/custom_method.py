@@ -21,7 +21,9 @@ def from_resource(
 
 
 def _http(resource_type: resource.Resource, method: resource_config.CustomMethod) -> render.Option:
-    method_camel = method.name[0].lower() + method.name[1:]
+    if not method.name:
+        raise ValueError("Custom method name cannot be empty.")
+    method_camel = method.name[:1].lower() + method.name[1:]
     if method.collection_based:
         parent = resource_type.parent()
         if parent:
